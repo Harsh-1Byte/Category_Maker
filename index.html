@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool_CategoryMaker</title>
+    <!-- Link_To_JS&CSS_Files -->
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="JS/index.js"></script> -->
+    
+</head>
+<body>
+
+    <!-- Heading -->
+    <img src="Assets/Images/Heading-Title.png" alt="" style="width: 80vw; margin-left: 10vw; margin-right: 10vw;">
+    <img src="Assets/Images/Heading-Bottom.png" alt="" style="width:79vw;  margin-left: 10vw; margin-right: 10vw;">
+    <!-- Heading Ends -->
+
+    <div style="margin-left: 10vw; margin-right: 10vw;">
+        <label for="code">Code:</label>
+        <input type="number" id="code" name="code"><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="place">Place:</label>
+        <input type="text" id="place" name="place"><br><br>
+        <label for="special_category">Special Category:</label>
+        <input type="special_category" id="special_category" ><br><br>
+        <input type="button" id = "btn" value="Submit">
+    </div>
+
+    <br>
+    <br>
+
+    <div>
+        <h4>Output</h4>
+        <div id="para"></div>
+    </div>
+    
+   
+    
+    
+    <script>
+        const code1 = document.getElementById('code');
+        const names = document.getElementById('name');    
+        const place1 = document.getElementById('place')    
+        const code = document.getElementById('para'); 
+        const btn = document.getElementById('btn');
+        
+        
+            
+        function year_month_section(){
+
+            // code to get the Year last two digit according to the rule of letter code
+            var year = (code1.value / 10000);
+            var rem = (code1.value % 10000)/10000;
+            year-=rem;
+            year+=1900;
+            // end
+
+            // code to get the Month last two digit according to the rule of letter code
+            var text = code1.value.toString();
+            var month = text.charAt(2) + text.charAt(3);
+            // end
+
+            // Make one of all the section of four type of category.
+            let cat1 = "[[Category: HI/" + year + "- श्रील प्रभुपाद के पत्र]]";
+            let cat2 = "[[Category: HI/"+ year + "- श्रील प्रभुपाद के प्रवचन,वार्तालाप एवं पत्र]]";
+            let cat3 = "[[Category: HI/"+ year + "-" + month + "- श्रील प्रभुपाद के प्रवचन,वार्तालाप एवं पत्र]]";
+            let result = cat1.concat("<br>", cat2, "<br>", cat3);
+            code.innerHTML = result;
+            // end
+            
+
+        }
+
+
+        btn.addEventListener('click', year_month_section);
+    </script>
+
+</body>
+</html>
+ 
